@@ -4,7 +4,10 @@ import styled from "styled-components";
 import arrow from './arrow.svg';
 
 const TitleWrapper = styled.div`
-
+  margin-bottom: 100px;
+  @media (max-width: 991px) {
+    margin-bottom: 25px;
+  }
 `;
 
 const TitleItem = styled.div`
@@ -15,6 +18,22 @@ const TitleItem = styled.div`
   position: relative;
   text-align: right;
   margin: 0 0 26px 0;
+  @media (max-width: 1200px) {
+    font-size: 60px;
+    line-height: 50px;
+  }
+  @media (max-width: 470px) {
+    font-size: 55px;
+    line-height: 45px;
+  }
+   @media (max-width: 450px) {
+    font-size: 45px;
+    line-height: 35px;
+  }
+  @media (max-width: 370px) {
+    font-size: 35px;
+    line-height: 25px;
+  }
   &::after {
     content: '';
     position: absolute;
@@ -33,7 +52,13 @@ const TitleItem = styled.div`
     bottom: 12px;
     left: 0;
     background-image: url(${arrow});
+    background-position: left center;
+    background-size: contain;
     display: ${props => props.arrow ? 'block' : 'none'};
+    @media (max-width: 470px) {
+      width: 29.78px;
+      height: 21.56px;
+    }
   }
 `;
 

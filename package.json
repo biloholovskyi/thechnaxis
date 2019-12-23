@@ -32,6 +32,10 @@
     ]
   },
   "devDependencies": {
-    "styled-components": "^4.4.1"
+    "jquery": "^3.4.1",
+    "react-3d-viewer": "^1.0.12",
+    "styled-components": "^4.4.1",
+    "three": "^0.111.0",
+    "three-obj-loader": "^1.1.3"
   }
 }
