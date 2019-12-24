@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import styled from "styled-components";
 
 import arrow from './arrow.svg';
@@ -18,6 +18,17 @@ const TitleItem = styled.div`
   position: relative;
   text-align: right;
   margin: 0 0 26px 0;
+  transition: all .9s;
+  transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-150%)'};
+  &:nth-child(1) {
+    transition-delay: .4s;
+  }
+  &:nth-child(2) {
+    transition-delay: .8s;
+  }
+  &:nth-child(3) {
+    transition-delay: 1.2s;
+  }
   @media (max-width: 1200px) {
     font-size: 60px;
     line-height: 50px;
@@ -62,14 +73,26 @@ const TitleItem = styled.div`
   }
 `;
 
-const Title = () => {
-  return (
-    <TitleWrapper>
-      <TitleItem>Разрабатываем</TitleItem>
-      <TitleItem>IT-продукты</TitleItem>
-      <TitleItem arrow={true}>для бизнеса</TitleItem>
-    </TitleWrapper>
-  )
-};
+export default class Title extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loaded: false
+    }
+  }
 
-export default Title;
+  componentDidMount() {
+    this.setState({loaded: true});
+  }
+
+  render() {
+    const {loaded} = this.state;
+    return (
+      <TitleWrapper>
+        <TitleItem loaded={loaded}>Разрабатываем</TitleItem>
+        <TitleItem loaded={loaded}>IT-продукты</TitleItem>
+        <TitleItem arrow={true} loaded={loaded}>для бизнеса</TitleItem>
+      </TitleWrapper>
+    )
+  }
+};

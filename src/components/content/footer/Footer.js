@@ -1,11 +1,13 @@
 import React, {Component} from "react";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 import Video from "../../video/Video";
 
 import pres from './pres.svg';
-import doc from './portfolio.pdf';
+// import doc from './portfolio.pdf';
 import play from './play.svg';
+
+const doc = 'https://technaxis.com/portfolio.pdf';
 
 const FooterWrapper = styled.div`
   display: flex;
@@ -39,8 +41,14 @@ const InfoItem = styled.div`
   color: #FFFFFF;
   opacity: 0.5;
   margin-right: 21px;
+  transition: all .9s;
+  transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-1000px)'};
+  &:nth-child(1) {
+    transition-delay: 2s;
+  }
   &:nth-child(2) {
     margin-right: 0;
+    transition-delay: 1.6s;
   }
 `;
 
@@ -56,6 +64,9 @@ const ShowVideo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: all .9s;
+  transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-1000px)'};
+  transition-delay: 1.8s;
   @media (max-width: 470px) {
     font-size: 20px;
     line-height: 26px;
@@ -63,9 +74,6 @@ const ShowVideo = styled.div`
   }
   @media (max-width: 375px) {
     font-size: 18px;
-  }
-  &:hover {
-    cursor: pointer;
   }
   .video-info {
     display: flex;
@@ -88,11 +96,15 @@ const ShowVideo = styled.div`
       background-position: center;
       background-size: contain;
       background-repeat: no-repeat;
+      transition: all .3s;
       @media (max-width: 375px) {
         width: 18px;
         height: 23.5px;
       }
     }
+  }
+  &:hover {
+    cursor: pointer;
   }
 `;
 
@@ -102,20 +114,32 @@ const Contacts = styled.div`
   margin-top: 35px;
   margin-bottom: 16px;
   .contact {
-    font-size: 20px;
-    line-height: 20px;
-    color: #FFFFFF;
-    font-family: "Theinhardt Pan";
-    display: block;
-    width: 100%;
-    margin-right: 21px;
-    @media (max-width: 450px) {
-      font-size: 16px;
-      line-height: 16px;
-    }
-    &:last-child {
-      margin-right: 0;
-    }
+    
+  }
+`;
+
+const Contact = styled.a`
+  font-size: 20px;
+  line-height: 20px;
+  color: #FFFFFF;
+  font-family: "Theinhardt Pan";
+  display: block;
+  width: 100%;
+  margin-right: 21px;
+  transition: all .9s;
+  transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-1000px)'};
+  &:nth-child(1) {
+    transition-delay: 2s;
+  }
+  &:nth-child(2) {
+    transition-delay: 1.4s;
+  }
+  @media (max-width: 450px) {
+    font-size: 16px;
+    line-height: 16px;
+  }
+  &:last-child {
+    margin-right: 0;
   }
 `;
 
@@ -123,10 +147,22 @@ const Address = styled.div`
   font-size: 14px;
   line-height: 22px;
   color: #FFFFFF;
-  opacity: 0.5;
+  opacity: ${props => props.loaded ? '0.5' : '0'};;
+  transition: all .9s;
+  transform: ${props => props.loaded ? 'translateY(0)' : 'translateY(500px)'};
+  transition-delay: 2.2s;
   @media (max-width: 370px) {
     font-size: 12px;
     line-height: 18px;
+  }
+`;
+
+const PresentationAnimation = keyframes`
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15px);
   }
 `;
 
@@ -139,6 +175,9 @@ const Presentation = styled.a`
   position: relative;
   height: max-content;
   margin-left: 84px;
+  transition: all .9s;
+  transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-1000px)'};
+  transition-delay: 1.8s;
   @media (max-width: 1200px) {
     margin-left: 0;
     width: max-content;
@@ -146,6 +185,9 @@ const Presentation = styled.a`
   }
   &:hover {
     cursor: pointer;
+    &::after {
+      animation: ${PresentationAnimation} infinite 1s; 
+    }
   }
   &::after {
     content: '';
@@ -191,8 +233,13 @@ export default class Footer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      video: false
+      video: false,
+      loaded: false
     }
+  }
+
+  componentDidMount() {
+    this.setState({loaded: true});
   }
 
   render() {
@@ -201,26 +248,26 @@ export default class Footer extends Component {
         {this.state.video ? <Video/> : false}
         <LeftFooter>
           <InfoWrapper>
-            <InfoItem>Доведем ваш IT-продукт от идеи до полноценного продукта.</InfoItem>
-            <InfoItem>Быстро реализуем MVP, создаем новое с помощью R’n’D, оцифровываем бизнес процессы.</InfoItem>
+            <InfoItem loaded={this.state.loaded}>Доведем ваш IT-продукт от идеи до полноценного продукта.</InfoItem>
+            <InfoItem loaded={this.state.loaded}>Быстро реализуем MVP, создаем новое с помощью R’n’D, оцифровываем бизнес процессы.</InfoItem>
           </InfoWrapper>
-          <ShowVideo onClick={this.props.show}>
+          <ShowVideo onClick={this.props.show} loaded={this.state.loaded}>
             Смотреть шоурил
             <div className="video-info">
-              <div className="time">0:12</div>
+              <div className="time">01:12</div>
               <div className="icon"></div>
             </div>
           </ShowVideo>
           <Contacts>
-            <a href="tel:78432024229" className="contact">+7843 202-4229</a>
-            <a href="mailto:info@technaxis.ru" className="contact">info@technaxis.ru</a>
+            <Contact href="tel:78432122072" loaded={this.state.loaded}>+7 (843) 212-20-72</Contact>
+            <Contact href="mailto:info@technaxis.com" loaded={this.state.loaded}>info@technaxis.com</Contact>
           </Contacts>
-          <Address>Петербургская ул., 35, Казань, респ. Татарстан, Россия, 420111</Address>
+          <Address loaded={this.state.loaded}>ул. Некрасова, д. 21, г. Казань, Респ. Татарстан, 420012</Address>
         </LeftFooter>
-        <Presentation href={doc} target='_blank'>
+        <Presentation href={doc} target='_blank' loaded={this.state.loaded}>
           Презентация
           <PresentationLine/>
-          <PresentationSize>12 mb</PresentationSize>
+          <PresentationSize>30,6 мб</PresentationSize>
         </Presentation>
       </FooterWrapper>
     )

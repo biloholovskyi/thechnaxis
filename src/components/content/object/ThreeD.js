@@ -46,6 +46,7 @@ class Scene extends Component {
     this.camera.position.z = 6;
     this.controls = new OrbitControls(this.camera, this.el);
     this.controls.enableZoom = false;
+    this.controls.enableRotate = window.innerWidth > 991 ? true : false;
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(width, height);
     this.el.appendChild(this.renderer.domElement);
