@@ -28,7 +28,7 @@ const Logo = styled.img`
 `;
 
 const SmallLogo = styled(Logo)`
-  margin-right: 178px;
+  margin-right: 181px;
   width: 29.67px;
   height: 37.81px;
   @media (max-width: 470px) {

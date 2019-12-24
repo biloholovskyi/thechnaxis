@@ -38,7 +38,7 @@ const InfoItem = styled.div`
   line-height: 22px;
   color: #FFFFFF;
   opacity: 0.5;
-  margin-right: 36px;
+  margin-right: 21px;
   &:nth-child(2) {
     margin-right: 0;
   }
@@ -108,7 +108,7 @@ const Contacts = styled.div`
     font-family: "Theinhardt Pan";
     display: block;
     width: 100%;
-    margin-right: 16px;
+    margin-right: 21px;
     @media (max-width: 450px) {
       font-size: 16px;
       line-height: 16px;
@@ -138,7 +138,7 @@ const Presentation = styled.a`
   color: #FFFFFF;
   position: relative;
   height: max-content;
-  margin-left: 42px;
+  margin-left: 84px;
   @media (max-width: 1200px) {
     margin-left: 0;
     width: max-content;

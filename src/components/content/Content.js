@@ -16,8 +16,8 @@ const ContentWrapper = styled.section`
 `;
 
 const Left = styled.div`
-  width: 626px;
-  min-width: 626px;
+  width: 621px;
+  min-width: 621px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
