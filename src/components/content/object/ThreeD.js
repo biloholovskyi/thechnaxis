@@ -15,6 +15,7 @@ const SceneWrapper = styled.div`
   flex: 1;
   max-height: 100%;
   display: flex;
+  position: relative;
 `;
 
 class Scene extends Component {

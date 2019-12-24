@@ -149,7 +149,7 @@ const Address = styled.div`
   color: #FFFFFF;
   opacity: ${props => props.loaded ? '0.5' : '0'};;
   transition: all .9s;
-  transform: ${props => props.loaded ? 'translateY(0)' : 'translateY(500px)'};
+  transform: ${props => props.loaded ? 'translateY(0)' : 'translateY(15px)'};
   transition-delay: 2.2s;
   @media (max-width: 370px) {
     font-size: 12px;

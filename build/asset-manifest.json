@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7ed1a2e7.chunk.css",
+    "main.js": "/static/js/main.06cd2bde.chunk.js",
+    "main.js.map": "/static/js/main.06cd2bde.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.25878834.js",
+    "runtime-main.js.map": "/static/js/runtime-main.25878834.js.map",
+    "static/js/2.30ddab1f.chunk.js": "/static/js/2.30ddab1f.chunk.js",
+    "static/js/2.30ddab1f.chunk.js.map": "/static/js/2.30ddab1f.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.9e217739c4719a860830be2c83e0eff5.js": "/precache-manifest.9e217739c4719a860830be2c83e0eff5.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.7ed1a2e7.chunk.css.map": "/static/css/main.7ed1a2e7.chunk.css.map",
+    "static/js/2.30ddab1f.chunk.js.LICENSE": "/static/js/2.30ddab1f.chunk.js.LICENSE",
+    "static/media/fonts.css": "/static/media/TheinhardtPanRegular.af333a1e.otf",
+    "static/media/Bump_2K.png": "/static/media/Bump_2K.3d226acf.png",
+    "static/media/Diffuse_2K.png": "/static/media/Diffuse_2K.d8065b35.png",
+    "static/media/Earth 2K.obj": "/static/media/Earth 2K.10fe05d5.obj",
+    "static/media/arrow.svg": "/static/media/arrow.5b2163a5.svg",
+    "static/media/close.svg": "/static/media/close.0e89115c.svg",
+    "static/media/logo.svg": "/static/media/logo.368a12db.svg",
+    "static/media/noise.png": "/static/media/noise.2ecb492f.png",
+    "static/media/play.svg": "/static/media/play.e241dd1e.svg",
+    "static/media/pres.svg": "/static/media/pres.4022f6ba.svg",
+    "static/media/small.svg": "/static/media/small.3294119b.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.25878834.js",
+    "static/js/2.30ddab1f.chunk.js",
+    "static/css/main.7ed1a2e7.chunk.css",
+    "static/js/main.06cd2bde.chunk.js"
+  ]
+}
