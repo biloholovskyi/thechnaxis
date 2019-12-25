@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "jquery": "^3.4.1",
+    "node-sass": "^4.13.0",
     "react-3d-viewer": "^1.0.12",
     "styled-components": "^4.4.1",
     "three": "^0.111.0",

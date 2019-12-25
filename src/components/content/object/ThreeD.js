@@ -4,7 +4,10 @@ import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import * as OBJLoader from 'three-obj-loader';
 import styled from "styled-components";
 
-import text from './mod/Textures/Diffuse_2K.png';
+import Loader from "../../loader/Loader";
+
+import text from './mod/Textures/Night_lights_2K.png';
+// import text from './mod/Textures/Diffuse_2K.png';
 import model from './mod/Earth 2K.obj';
 import bump from './mod/Textures/Bump_2K.png';
 
@@ -16,6 +19,25 @@ const SceneWrapper = styled.div`
   max-height: 100%;
   display: flex;
   position: relative;
+  
+  &::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  content: '';
+  z-index: 1999;
+  }
+`;
+
+const SwipeBox = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 100;
+  left: 0;
 `;
 
 class Scene extends Component {
@@ -30,7 +52,6 @@ class Scene extends Component {
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleWindowResize);
     window.cancelAnimationFrame(this.requestID);
-    this.controls.dispose();
   }
 
   sceneSetup = () => {
@@ -45,9 +66,10 @@ class Scene extends Component {
       1000 // far plane
     );
     this.camera.position.z = 6;
-    this.controls = new OrbitControls(this.camera, this.el);
-    this.controls.enableZoom = false;
-    this.controls.enableRotate = window.innerWidth > 991 ? true : false;
+    if (window.innerWidth > 991) {
+      this.controls = new OrbitControls(this.camera, this.el);
+      this.controls.enableZoom = false;
+    }
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize(width, height);
     this.el.appendChild(this.renderer.domElement);
@@ -73,6 +95,7 @@ class Scene extends Component {
       object.traverse(function (child) {
         if (child instanceof THREE.Mesh) {
           meshes.push(child);
+          console.log(meshes);
         }
       });
 
@@ -93,6 +116,12 @@ class Scene extends Component {
     });
     const ambiColor = "#ffffff";
     const ambientLight = new THREE.AmbientLight(ambiColor);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, .3);
+    directionalLight.position.y = -2;
+    directionalLight.position.x = -22;
+    directionalLight.position.z = 7;
+    directionalLight.castShadow = true;
+    this.scene.add(directionalLight);
     this.scene.add(ambientLight);
   };
 
@@ -109,23 +138,46 @@ class Scene extends Component {
   handleWindowResize = () => {
     const width = this.el.clientWidth;
     const height = window.innerWidth < 992 ? width : this.el.clientHeight - width > width / 2 ? width : this.el.clientHeight;
+    if (window.innerWidth > 991) {
+      this.controls = new OrbitControls(this.camera, this.el);
+      this.controls.enableZoom = false;
+    } else {
+      this.controls = false;
 
+    }
     this.renderer.setSize(width, height);
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
   };
 
   render() {
-    return <SceneWrapper ref={ref => (this.el = ref)}/>;
+    const box = window.innerWidth > 991 ? false : <SwipeBox/>;
+    return (
+      <SceneWrapper ref={ref => (this.el = ref)}>{box}</SceneWrapper>
+    );
   }
 }
 
 
 export default class ThreeD extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({loading: false})
+    }, 500);
+  }
+
   render() {
+    const rend = this.state.loading ? <Loader/> : <Scene/>;
     return (
       <>
-        <Scene/>
+        {rend}
       </>
     );
   }

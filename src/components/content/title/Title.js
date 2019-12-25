@@ -18,16 +18,16 @@ const TitleItem = styled.div`
   position: relative;
   text-align: right;
   margin: 0 0 26px 0;
-  transition: all .9s;
+  transition: all .3s;
   transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-150%)'};
   &:nth-child(1) {
-    transition-delay: .4s;
+    transition-delay: .2s;
   }
   &:nth-child(2) {
-    transition-delay: .8s;
+    transition-delay: .4s;
   }
   &:nth-child(3) {
-    transition-delay: 1.2s;
+    transition-delay: .6s;
   }
   @media (max-width: 1200px) {
     font-size: 60px;

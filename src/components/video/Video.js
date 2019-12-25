@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import styled, {keyframes}from "styled-components";
 
-// import showreel from './showreel.mp4';
 import btn from './btn.gif';
 import close from './close.svg';
 import noise from './noise.png';

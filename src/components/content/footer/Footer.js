@@ -4,7 +4,6 @@ import styled, {keyframes} from "styled-components";
 import Video from "../../video/Video";
 
 import pres from './pres.svg';
-// import doc from './portfolio.pdf';
 import play from './play.svg';
 
 const doc = 'https://technaxis.com/portfolio.pdf';
@@ -41,14 +40,14 @@ const InfoItem = styled.div`
   color: #FFFFFF;
   opacity: 0.5;
   margin-right: 21px;
-  transition: all .9s;
+  transition: all .4s;
   transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-1000px)'};
   &:nth-child(1) {
-    transition-delay: 2s;
+    transition-delay: 1s;
   }
   &:nth-child(2) {
     margin-right: 0;
-    transition-delay: 1.6s;
+    transition-delay: .7s;
   }
 `;
 
@@ -64,9 +63,9 @@ const ShowVideo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: all .9s;
+  transition: all .5s;
   transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-1000px)'};
-  transition-delay: 1.8s;
+  transition-delay: .8s;
   @media (max-width: 470px) {
     font-size: 20px;
     line-height: 26px;
@@ -113,9 +112,6 @@ const Contacts = styled.div`
   justify-content: space-between;
   margin-top: 35px;
   margin-bottom: 16px;
-  .contact {
-    
-  }
 `;
 
 const Contact = styled.a`
@@ -126,13 +122,13 @@ const Contact = styled.a`
   display: block;
   width: 100%;
   margin-right: 21px;
-  transition: all .9s;
+  transition: all .4s;
   transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-1000px)'};
   &:nth-child(1) {
-    transition-delay: 2s;
+    transition-delay: .8s;
   }
   &:nth-child(2) {
-    transition-delay: 1.4s;
+    transition-delay: .6s;
   }
   @media (max-width: 450px) {
     font-size: 16px;
@@ -150,7 +146,7 @@ const Address = styled.div`
   opacity: ${props => props.loaded ? '0.5' : '0'};;
   transition: all .9s;
   transform: ${props => props.loaded ? 'translateY(0)' : 'translateY(15px)'};
-  transition-delay: 2.2s;
+  transition-delay: 1s;
   @media (max-width: 370px) {
     font-size: 12px;
     line-height: 18px;
@@ -175,9 +171,9 @@ const Presentation = styled.a`
   position: relative;
   height: max-content;
   margin-left: 84px;
-  transition: all .9s;
+  transition: all .4s;
   transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-1000px)'};
-  transition-delay: 1.8s;
+  transition-delay: .8s;
   @media (max-width: 1200px) {
     margin-left: 0;
     width: max-content;
