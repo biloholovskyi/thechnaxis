@@ -40,14 +40,14 @@ const InfoItem = styled.div`
   color: #FFFFFF;
   opacity: 0.5;
   margin-right: 21px;
-  transition: all .4s;
+  transition: all .7s;
   transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-1000px)'};
   &:nth-child(1) {
-    transition-delay: 1s;
+    transition-delay: 1.1s;
   }
   &:nth-child(2) {
     margin-right: 0;
-    transition-delay: .7s;
+    transition-delay: .9s;
   }
 `;
 
@@ -63,9 +63,9 @@ const ShowVideo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: all .5s;
+  transition: all 1s;
   transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-1000px)'};
-  transition-delay: .8s;
+  transition-delay: 1.4s;
   @media (max-width: 470px) {
     font-size: 20px;
     line-height: 26px;
@@ -122,13 +122,13 @@ const Contact = styled.a`
   display: block;
   width: 100%;
   margin-right: 21px;
-  transition: all .4s;
+  transition: all .7s;
   transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-1000px)'};
   &:nth-child(1) {
-    transition-delay: .8s;
+    transition-delay: 1s;
   }
   &:nth-child(2) {
-    transition-delay: .6s;
+    transition-delay: .9s;
   }
   @media (max-width: 450px) {
     font-size: 16px;
@@ -146,7 +146,7 @@ const Address = styled.div`
   opacity: ${props => props.loaded ? '0.5' : '0'};;
   transition: all .9s;
   transform: ${props => props.loaded ? 'translateY(0)' : 'translateY(15px)'};
-  transition-delay: 1s;
+  transition-delay: 1.5s;
   @media (max-width: 370px) {
     font-size: 12px;
     line-height: 18px;
@@ -235,7 +235,9 @@ export default class Footer extends Component {
   }
 
   componentDidMount() {
-    this.setState({loaded: true});
+    setTimeout(() => {
+      this.setState({loaded: true});
+    }, 100);
   }
 
   render() {

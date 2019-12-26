@@ -18,16 +18,16 @@ const TitleItem = styled.div`
   position: relative;
   text-align: right;
   margin: 0 0 26px 0;
-  transition: all .3s;
+  transition: all .6s;
   transform: ${props => props.loaded ? 'translateX(0)' : 'translateX(-150%)'};
   &:nth-child(1) {
     transition-delay: .2s;
   }
   &:nth-child(2) {
-    transition-delay: .4s;
+    transition-delay: .5s;
   }
   &:nth-child(3) {
-    transition-delay: .6s;
+    transition-delay: .7s;
   }
   @media (max-width: 1200px) {
     font-size: 60px;
@@ -52,7 +52,7 @@ const TitleItem = styled.div`
     height: 1px;
     background-color: #fff;
     opacity: 0.5;
-    bottom: 0;
+    bottom: ${props => props.arrow ? '1px' : '0'};
     left: 0;
   }
   &::before {
@@ -82,14 +82,16 @@ export default class Title extends Component {
   }
 
   componentDidMount() {
-    this.setState({loaded: true});
+    setTimeout(() => {
+      this.setState({loaded: true});
+    }, 100);
   }
 
   render() {
     const {loaded} = this.state;
     return (
       <TitleWrapper>
-        <TitleItem loaded={loaded}>Разрабатываем</TitleItem>
+        <TitleItem loaded={loaded}>Разрабатываем{loaded}</TitleItem>
         <TitleItem loaded={loaded}>IT-продукты</TitleItem>
         <TitleItem arrow={true} loaded={loaded}>для бизнеса</TitleItem>
       </TitleWrapper>

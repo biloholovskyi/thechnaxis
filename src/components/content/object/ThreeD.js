@@ -95,7 +95,6 @@ class Scene extends Component {
       object.traverse(function (child) {
         if (child instanceof THREE.Mesh) {
           meshes.push(child);
-          console.log(meshes);
         }
       });
 
